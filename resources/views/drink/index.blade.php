@@ -38,7 +38,7 @@
                         </v-col>
                     </v-row>
                     <div class="py-4">
-                        <v-btn outlined color="error" @click="reset"><v-icon fab>mdi-restart-alt</v-icon>&nbsp;Reset</v-btn>
+                        <v-btn outlined color="error" @click="reset"><v-icon fab>mdi-restart</v-icon>&nbsp;Reset</v-btn>
                     </div>
                 </v-card-text>
             </v-card>
