@@ -10,76 +10,17 @@ class DrinkController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('drink.index', []);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function list()
     {
-        //
-    }
+        $records = Drink::query()->get(['name', 'caffeine', 'desc']);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Drink  $drink
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Drink $drink)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Drink  $drink
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Drink $drink)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Drink  $drink
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Drink $drink)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Drink  $drink
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Drink $drink)
-    {
-        //
+        return ['status' => 'ok', 'records' => $records];
     }
 }
