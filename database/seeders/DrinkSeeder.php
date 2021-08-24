@@ -28,7 +28,7 @@ class DrinkSeeder extends Seeder
             list($name, $caffeine, $desc) = $drink;
             Drink::query()->create([
                 'name' => $name,
-                'drink' => $caffeine,
+                'caffeine' => $caffeine,
                 'desc' => $desc,
             ]);
         }

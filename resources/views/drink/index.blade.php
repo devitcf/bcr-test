@@ -47,7 +47,7 @@
 </body>
 </html>
 <script>
-    const list_drink_api = "{{ env('APP_URL').'api/drink/list' }}";
+    const list_drink_api = "{{ env('APP_URL').'/api/drink/list' }}";
 
     var app = new Vue({
         el: '#app',

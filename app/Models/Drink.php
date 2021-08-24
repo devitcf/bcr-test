@@ -8,7 +8,7 @@ class Drink extends Model
 {
     protected $fillable = [
         'name',
-        'drink',
+        'caffeine',
         'desc',
     ];
 }
