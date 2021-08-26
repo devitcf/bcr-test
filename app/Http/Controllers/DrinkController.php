@@ -23,4 +23,34 @@ class DrinkController extends Controller
 
         return ['status' => 'ok', 'records' => $records];
     }
+
+    public function calculate(Request $request)
+    {
+        $limit = 500;
+
+        $res = ['status' => 'fail'];
+
+        $id = Arr::get($request, 'id', null);
+        $qty = Arr::get($request, 'qty', null);
+
+        if (empty($id) || ((int)$qty < 1)) {
+            return array_merge($res, ['error' => 'invalid param']);
+        }
+
+        $record = Drink::query()->find($id);
+        if (!$record) {
+            return array_merge($res, ['error' => 'invalid coffee']);
+        }
+
+        $consumed_caffeine = $record->caffeine * $qty;
+        $remaining_caffeine = $limit - $consumed_caffeine;
+        $remaining_amount = floor($remaining_caffeine / $record->caffeine);
+
+        return [
+            'status' => 'ok',
+            'limit' => $limit,
+            'consumed_caffeine' => $consumed_caffeine,
+            'quota' => ($remaining_amount <= 0) ? "You cannot consume any more $record->name." : "You can still consume $remaining_amount $record->name.",
+        ];
+    }
 }
