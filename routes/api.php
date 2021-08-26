@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('drink')->group(function (){
     Route::get('list', [DrinkController::class, 'list']);
+    Route::get('limit/get', [DrinkController::class, 'getLimit']);
     Route::post('calculate', [DrinkController::class, 'calculate']);
 });

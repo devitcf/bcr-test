@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Drink;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class DrinkController extends Controller
 {
+    const CAFFEINE_LIMIT = 500;
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +21,14 @@ class DrinkController extends Controller
 
     public function list()
     {
-        $records = Drink::query()->get(['name', 'caffeine', 'desc']);
+        $records = Drink::query()->get(['id', 'name', 'caffeine', 'desc']);
 
         return ['status' => 'ok', 'records' => $records];
+    }
+
+    public function getLimit()
+    {
+        return ['status' => 'ok', 'limit' => self::CAFFEINE_LIMIT];
     }
 
     public function calculate(Request $request)
